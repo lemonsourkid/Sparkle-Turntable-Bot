@@ -65,6 +65,9 @@ exports.updateVoteEventHandler = function (data) {
     currentsong.down = data.room.metadata.downvotes;
     currentsong.listeners = data.room.metadata.listeners;
     
+    if (data.room.metadata.votelog[0][1] == 'down') {
+        bot.speak('Scuse me everyone, we gotta lamer in the room!');
+    }
     //If the vote exceeds the bonus threshold and the bot's bonus mode
     //is set to VOTE, give a bonus point
     if ((config.bonusvote == 'VOTE') && !bonusvote && (currentsong.djid != config.botinfo.userid)) {
